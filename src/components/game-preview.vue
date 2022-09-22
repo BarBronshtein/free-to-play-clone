@@ -7,8 +7,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
-  name: 'App',
-  components: {},
+  name: 'game-preview',
+  props: { game:},
   data() {
     return {}
   },
