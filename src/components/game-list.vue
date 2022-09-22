@@ -1,5 +1,5 @@
 <template>
-  <gamePreview game="game"></gamePreview>
+  <gamePreview game="game" />
 </template>
 
 <script lang="ts">

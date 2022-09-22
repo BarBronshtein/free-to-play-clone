@@ -1,72 +1,42 @@
-export const storageService = {
+import { storageService } from './async-storage.service';
+import axios from 'axios';
+import type { Game } from '@/models/game.model';
+const ENTITY = 'game';
+
+const options = (id: string) => ({
+	method: 'GET',
+	url: 'https://free-to-play-games-database.p.rapidapi.com/api/game',
+	params: id,
+	headers: {
+		'X-RapidAPI-Key': 'eb5bde3d1fmsh6e9d5cbc281da34p11d2dfjsnee13b087aa8f',
+		'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+	},
+});
+
+export const GameService = {
 	query,
-	get,
-	post,
-	put,
+	getById,
 	remove,
-	makeId,
 };
+async function query(filterBy = {}) {
+	if (!localStorage.getItem(ENTITY)?.length)
+		return await axios.get(`https://www.freetogame.com/api/games`);
 
-interface Entity {
-	id?: string;
+	const games = (await storageService.query(ENTITY)) as unknown as Game[];
+	return _filterGames(filterBy as { category: string; name: string }, games);
 }
 
-async function query(entityType: string, delay = 1000): Promise<Entity[]> {
-	const entities = JSON.parse(localStorage.getItem(entityType) || 'null') || [];
-	if (delay) {
-		return new Promise(resolve => setTimeout(resolve, delay, entities));
-	}
-	return entities;
+async function getById(gameId: string) {
+	return await storageService.get(ENTITY, gameId);
 }
 
-async function get(entityType: string, entityId: string): Promise<Entity> {
-	const entities = await query(entityType);
-	const entity = entities.find(entity => entity.id === entityId);
-	if (!entity)
-		throw new Error(
-			`Cannot get, Item ${entityId} of type: ${entityType} does not exist`
-		);
-	return entity;
+async function remove(gameId: string) {
+	return await storageService.remove(ENTITY, gameId);
 }
 
-async function post(entityType: string, newEntity: Entity): Promise<Entity> {
-	newEntity = { ...newEntity, id: makeId() };
-	const entities = await query(entityType);
-	entities.push(newEntity);
-	_save(entityType, entities);
-	return newEntity;
-}
-
-async function put(entityType: string, updatedEntity: Entity): Promise<Entity> {
-	const entities = await query(entityType);
-	const idx = entities.findIndex(entity => entity.id === updatedEntity.id);
-	entities[idx] = updatedEntity;
-	_save(entityType, entities);
-	return updatedEntity;
-}
-
-async function remove(entityType: string, entityId: string): Promise<boolean> {
-	const entities = await query(entityType);
-	const idx = entities.findIndex(entity => entity.id === entityId);
-	if (idx !== -1) entities.splice(idx, 1);
-	else
-		throw new Error(
-			`Cannot remove, item ${entityId} of type: ${entityType} does not exist`
-		);
-	_save(entityType, entities);
-	return true;
-}
-
-function _save(entityType: string, entities: Entity[]) {
-	localStorage.setItem(entityType, JSON.stringify(entities));
-}
-
-function makeId(length = 5) {
-	var txt = '';
-	var possible =
-		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	for (var i = 0; i < length; i++) {
-		txt += possible.charAt(Math.floor(Math.random() * possible.length));
-	}
-	return txt;
+function _filterGames(
+	filterBy: { category: string | undefined; name: string | undefined },
+	games: Game[]
+) {
+	return games;
 }
