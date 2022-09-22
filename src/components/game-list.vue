@@ -1,14 +1,13 @@
 <template>
-  <div>
-
-  </div>
+  <gamePreview game="game"></gamePreview>
 </template>
 
 <script lang="ts">
+import gamePreview from './game-preview.vue';
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'App',
-  components: {},
+  components: { gamePreview },
   data() {
     return {}
   },

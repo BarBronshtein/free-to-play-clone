@@ -8,7 +8,14 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'game-preview',
-  props: { game:},
+  props: {
+    game: {
+      id: Number,
+      title: String,
+      thumbnail: String,
+      releaseDate: String
+    }
+  },
   data() {
     return {}
   },
