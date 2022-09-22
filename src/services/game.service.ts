@@ -23,7 +23,7 @@ async function query(filterBy = {}) {
 		return await axios.get(`https://www.freetogame.com/api/games`);
 
 	const games = (await storageService.query(ENTITY)) as unknown as Game[];
-	return _filterGames(filterBy as { category: string; name: string }, games);
+	return _filterGames(filterBy as { genre: string; title: string }, games);
 }
 
 async function getById(gameId: string) {
@@ -35,8 +35,11 @@ async function remove(gameId: string) {
 }
 
 function _filterGames(
-	filterBy: { category: string | undefined; name: string | undefined },
+	filterBy: { genre: string | undefined; title: string | undefined },
 	games: Game[]
 ) {
-	return games;
+	let res;
+	if (filterBy.genre) res = games.filter(game => game.genre === filterBy.genre);
+	if (filterBy.title) res = games.filter(game => game.title === filterBy.title);
+	return res || games;
 }
