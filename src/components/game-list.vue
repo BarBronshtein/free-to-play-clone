@@ -1,22 +1,22 @@
 <template>
-  <gamePreview game="game" />
+  <section class="game-list">
+    <div v-for="game in games" :key="game.id">
+      <game-preview :game="game" @selectGame="$emit('selectGame',$event)" />
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
 import gamePreview from './game-preview.vue';
-import { defineComponent } from 'vue';
-export default defineComponent({
-  name: 'App',
-  components: { gamePreview },
+export default {
+  name: 'game-list',
   data() {
-    return {}
+    return {};
   },
-  methods: {},
-  computed: {},
-  created() { },
-  unmounted() { }
-})
+  components: { gamePreview },
+  props: ['games'],
 
+};
 </script>
 
 <style lang="scss" scoped>
