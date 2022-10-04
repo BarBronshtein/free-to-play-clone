@@ -4,7 +4,7 @@
       <img :src="src" alt="loading..." />
       <a class="game-link" :href="game?.gameUrl">Play now</a>
       <div class="date">
-        {{game.releaseDate}}</div>
+        {{game?.releaseDate}}</div>
     </div>
     <div class="col right-col flex column">
       <div class="title">{{game.title}}</div>

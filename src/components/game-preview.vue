@@ -1,6 +1,6 @@
 <template>
   <article @click="onSelectGame" class="game-preview">
-    <img :src="game?.imgUrl" />
+    <img :src="game.imgUrl" />
     <div class="sub-title title">{{game.title.length> 18 ? game.title.slice(0,18)+'...':game.title}}</div>
     <div class="sub-title date">{{game.releaseDate}}</div>
     <div class="overlay"></div>

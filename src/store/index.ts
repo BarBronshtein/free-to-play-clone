@@ -36,7 +36,6 @@ const store = createStore<State>({
 	},
 	actions: {
 		async loadGames({ commit }, { filterBy }) {
-			console.log(filterBy);
 			commit({ type: 'setFilterBy', filterBy });
 			try {
 				const games = await gameService.query(filterBy);

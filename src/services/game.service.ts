@@ -31,7 +31,7 @@ async function query(filterBy = '') {
 		id: game.id,
 		title: game.title,
 		genre: game.genre,
-		imgUrl: game.thumnbail,
+		imgUrl: game.thumbnail,
 		releaseDate: game.release_date,
 	}));
 
