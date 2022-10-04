@@ -7,10 +7,10 @@
 @import 'base/helpers';
 @import 'base/layout';
 // Components
-@import 'cmps/game-list';
-@import 'cmps/game-preview';
-@import 'cmps/app-header';
-@import 'cmps/game-filter';
+@import 'components/game-list';
+@import 'components/game-preview';
+@import 'components/app-header';
+@import 'components/game-filter';
 // Views
 @import 'views/game-app';
 @import 'views/game-details';

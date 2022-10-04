@@ -1,0 +1,13 @@
+.app-header {
+	position: fixed;
+	padding: 1rem 0;
+	width: 100%;
+	border-bottom: 1px solid rgba(28, 28, 28, 0.6);
+	text-shadow: 1px 1px 1px rgb(0 0 0 / 30%);
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	z-index: 15;
+	background-color: rgba(28, 28, 28, 0.6);
+	.logo {
+		cursor: pointer;
+	}
+}
