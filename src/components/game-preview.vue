@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue'
+import { defineComponent, type PropType } from 'vue'
 import type { Game } from '@/models/game.model';
-export default {
+export default defineComponent({
   name: 'game-preview',
   data() {
     return {};
@@ -25,10 +25,9 @@ export default {
   methods: {
     onSelectGame() {
       this.$emit("selectGame", this.game.id);
-    },
+    }
   },
-  computed: {},
-};
+});
 </script>
 
 <style lang="scss" scoped>

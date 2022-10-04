@@ -2,7 +2,6 @@
 import { defineComponent } from 'vue';
 import appHeader from './components/app-header.vue'
 import appFooter from './components/app-footer.vue';
-import { key } from './store/gameStore'
 export default defineComponent({
   name: 'App',
   data() {

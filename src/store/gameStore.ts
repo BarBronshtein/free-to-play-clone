@@ -1,13 +1,11 @@
 import type { Game } from '@/models/game.model';
-import { createStore, Store } from 'vuex';
+import { createStore } from 'vuex';
 import { gameService } from '@/services/game.service';
-import type { InjectionKey } from 'vue';
 interface State {
 	games: null | Game[];
 	curGame: null | Game;
 	filterBy: null | Object;
 }
-export const key: InjectionKey<Store<State>> = Symbol();
 const store = createStore<State>({
 	state: () => ({
 		games: null,

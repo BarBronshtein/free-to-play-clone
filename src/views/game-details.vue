@@ -15,10 +15,12 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   data() {
     return {
-      src: [] as string[],
+      srcs: [],
       counter: 0,
       curSrc: null as unknown as string,
       intervalId: null as unknown as number,
@@ -56,7 +58,7 @@ export default {
   unmounted() {
     clearInterval(this.intervalId);
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
