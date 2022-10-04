@@ -1,0 +1,19 @@
+.game-filter {
+	input {
+		background-color: #1c1e22;
+		border: 0 solid rgba(0, 0, 0, 0.6);
+		border-radius: 5px;
+		line-height: 1.5;
+		padding: 0.5rem 1rem;
+		min-width: 250px;
+		display: block;
+		margin-bottom: 2rem;
+		color: #7a8288;
+		padding: 1rem;
+		outline: none;
+		width: 33%;
+	}
+	&:focus {
+		background-color: #1c1e22;
+	}
+}
