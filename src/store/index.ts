@@ -1,10 +1,7 @@
+import { createApp } from 'vue';
 import { createStore } from 'vuex';
+import gameModule from './modules/game.module';
+// Create a new store instance.
 const store = createStore({
-	strict: true,
-	state: {},
-	getters: {},
-	mutations: {},
-	actions: {},
-	modules: {},
+	modules: gameModule,
 });
-export default store;
