@@ -7,9 +7,9 @@ interface Options {
 	headers: Object;
 	params?: Object | string;
 }
-const options = (filter: Object | string) => ({
+const options = (filter: { tag?: string; id?: string }) => ({
 	method: 'GET',
-	url: filter
+	url: filter.tag
 		? 'https://free-to-play-games-database.p.rapidapi.com/api/filter'
 		: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
 	headers: {
@@ -24,7 +24,7 @@ export const gameService = {
 	getById,
 };
 async function query(filterBy = '') {
-	const opt = options(filterBy) as Options;
+	const opt = options({ tag: filterBy }) as Options;
 	if (!filterBy) delete opt.params;
 	const games = await axios.request(opt as any);
 	return games.data.map((game: any) => ({
@@ -34,8 +34,6 @@ async function query(filterBy = '') {
 		imgUrl: game.thumbnail,
 		releaseDate: game.release_date,
 	}));
-
-	// const games = (await storageService.query(ENTITY)) as unknown as Game[];
 }
 
 async function getById(gameId: string) {

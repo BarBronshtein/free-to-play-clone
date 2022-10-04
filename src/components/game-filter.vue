@@ -1,6 +1,6 @@
 <template>
   <section class="game-filter">
-    <input @input="execute" v-model="category" type="text" placeholder="Search for games">
+    <input @input="execute" v-model="category" type="text" placeholder="Search for games by genre">
   </section>
 </template>
 
