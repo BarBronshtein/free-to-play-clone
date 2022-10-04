@@ -9,7 +9,7 @@
 	flex-direction: row-reverse;
 }
 
-.flex.flex-column {
+.flex.column {
 	flex-direction: column;
 }
 
@@ -60,11 +60,10 @@
 	transform: rotate(-180deg);
 }
 
-.tag-text {
-	color: $clr1;
-	text-transform: uppercase;
-	@include type(boldCondensed);
-}
+// .tag-text {
+// 	text-transform: uppercase;
+// 	// @include type(boldCondensed);
+// }
 
 .dash {
 	margin-inline: em(4px);
