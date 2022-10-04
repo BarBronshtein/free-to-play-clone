@@ -11,7 +11,7 @@ const options = (filter: Object | string) => ({
 	method: 'GET',
 	url: filter
 		? 'https://free-to-play-games-database.p.rapidapi.com/api/filter'
-		: 'https://free-to-play-games-database.p.rapidapi.com/api/game',
+		: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
 	headers: {
 		'X-RapidAPI-Key': 'eb5bde3d1fmsh6e9d5cbc281da34p11d2dfjsnee13b087aa8f',
 		'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
@@ -19,7 +19,7 @@ const options = (filter: Object | string) => ({
 	params: filter,
 });
 
-export const GameService = {
+export const gameService = {
 	query,
 	getById,
 };

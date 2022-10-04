@@ -1,31 +1,23 @@
 <script lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
 import { defineComponent } from 'vue';
-import { GameService } from './services/game.service';
+import appHeader from './components/app-header.vue'
+import appFooter from './components/app-footer.vue';
+import { key } from './store/gameStore'
 export default defineComponent({
   name: 'App',
   data() {
-    return {}
+    return {
+    }
   },
-  methods: {},
-  computed: {},
   created() {
-    this.$store.dispatch('loadgames')
+    this.$store.dispatch({ type: 'loadGames', filterBy: '' })
   },
+  components: { appHeader, appFooter }
 })
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-      </nav>
-    </div>
-  </header>
-
+  <app-header />
   <RouterView />
+  <app-footer />
 </template>
