@@ -3,9 +3,9 @@
 @import 'setup/mixins';
 @import 'setup/functions';
 // Basics
-@import 'base/base';
-@import 'base/helpers';
-@import 'base/layout';
+@import 'basics/base';
+@import 'basics/helpers';
+@import 'basics/layout';
 // Components
 @import 'components/game-list';
 @import 'components/game-preview';
